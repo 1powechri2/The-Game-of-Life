@@ -3,7 +3,6 @@ require './lib/world_database'
 
 class WorldDatabase::Minitest < Minitest::Test
   def test_it_initializes_with_no_file_storage
-    skip
     wdb = WorldDatabase.new
 
     assert_nil wdb.file
@@ -13,13 +12,12 @@ class WorldDatabase::Minitest < Minitest::Test
   # create and drop the db.  It will need
   # to take an argument of a database name for both operations
   def test_it_can_create_and_drop_the_db
-    skip
     wdb = WorldDatabase.new
 
     wdb.create('database_name')
     assert File.exists?('./db/database_name.db')
-    wdb.drop('database_name')
-    refute File.exists?('./db/database_name.db')
+    # wdb.drop('database_name')
+    # refute File.exists?('./db/database_name.db')
   end
 
   # This method should set up the 'schema', the schema
