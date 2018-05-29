@@ -13,6 +13,9 @@
  # this creates our 2 dimensional matrix where we can
  # compare neighbors for the next generation.
  # I found a ruby library that we can use to do this easily
- # called Martrix. Here is an example in pry:
+ # called Matrix. Here is an example in pry:
  # pry(main)> Matrix.build(4,4){|row, col| rand(2)}
  # =>Matrix[[1, 0, 1, 1], [1, 1, 0, 1], [1, 0, 1, 1], [1, 1, 1, 0]]
+
+ Need four columns for three by three world, columns world_name, generation,
+ row_number, row data
