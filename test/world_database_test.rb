@@ -16,8 +16,8 @@ class WorldDatabase::Minitest < Minitest::Test
 
     wdb.create('database_name')
     assert File.exists?('./db/database_name.db')
-    # wdb.drop('database_name')
-    # refute File.exists?('./db/database_name.db')
+    wdb.drop('database_name')
+    refute File.exists?('./db/database_name.db')
   end
 
   # This method should set up the 'schema', the schema
