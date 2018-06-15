@@ -16,6 +16,11 @@ class WorldDatabase
 
   def migrate
     @file.execute "CREATE TABLE worlds(id INT, gereration INT row_1 VARCHAR(9),
-                                      row_2 VARCHAR(9), row_3 VARCHAR(9))" 
+                                      row_2 VARCHAR(9), row_3 VARCHAR(9))"
+  end
+
+  def setup(db_name)
+    create(db_name)
+    migrate
   end
 end

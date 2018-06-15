@@ -41,13 +41,12 @@ class WorldDatabase::Minitest < Minitest::Test
   # setup will roll all of the creative commands into one go
   # running db.setup should do all of the things above except drop the DB
   def test_it_can_run_the_setup_command
-    skip
     db = WorldDatabase.new
     db.setup('database_name')
 
     assert File.exists?('./db/database_name.db')
 
-    sqldb = SQLite3::Database.new("./db/database_name.db")
+    sqldb = db.file
     statement = 'SELECT * FROM worlds'
     result = sqldb.execute(statement)
 
