@@ -89,7 +89,7 @@ class WorldDatabase::Minitest < Minitest::Test
 
     assert File.exists?('./db/database_name.db')
 
-    sqldb = db.file
+    sqldb = wdb.file
     statement = 'SELECT * FROM worlds'
     result = sqldb.execute(statement)
 
