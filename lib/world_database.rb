@@ -23,4 +23,9 @@ class WorldDatabase
     create(db_name)
     migrate
   end
+
+  def reset(db_name)
+    drop(db_name)
+    setup(db_name)
+  end
 end

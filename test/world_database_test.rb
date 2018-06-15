@@ -58,7 +58,6 @@ class WorldDatabase::Minitest < Minitest::Test
   # and drop the database, recreate the database, and migrate a
   # database schema to it
   def test_it_can_run_the_reset_command
-    skip
     db = WorldDatabase.new
     db.create('database_name')
 
@@ -68,7 +67,7 @@ class WorldDatabase::Minitest < Minitest::Test
 
     assert File.exists?('./db/database_name.db')
 
-    sqldb = SQLite3::Database.new("./db/database_name.db")
+    sqldb = db.file
     statement = 'SELECT * FROM worlds'
     result = sqldb.execute(statement)
 
@@ -77,7 +76,6 @@ class WorldDatabase::Minitest < Minitest::Test
   end
 
   def test_it_can_have_data_inserted
-    skip
     wdb = WorldDatabase.new
     wdb.setup('database_name')
     table_name = 'worlds'
@@ -91,7 +89,7 @@ class WorldDatabase::Minitest < Minitest::Test
 
     assert File.exists?('./db/database_name.db')
 
-    sqldb = SQLite3::Database.new("./db/database_name.db")
+    sqldb = db.file
     statement = 'SELECT * FROM worlds'
     result = sqldb.execute(statement)
 
