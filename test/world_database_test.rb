@@ -24,14 +24,13 @@ class WorldDatabase::Minitest < Minitest::Test
   # being the column names and datatypes.  This should write
   # it to the database.
   def test_it_can_migrate_database_schema
-    skip
     wdb = WorldDatabase.new
     wdb.create('database_name')
     wdb.migrate
 
     assert File.exists?('./db/database_name.db')
 
-    sqldb = SQLite3::Database.new("./db/database_name.db")
+    sqldb = wdb.file
     statement = 'SELECT * FROM worlds'
     result = sqldb.execute(statement)
 

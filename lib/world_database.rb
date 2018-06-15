@@ -13,4 +13,9 @@ class WorldDatabase
   def drop(db_name)
     `rm ./db/#{db_name}.db`
   end
+
+  def migrate
+    @file.execute "CREATE TABLE worlds(id INT, gereration INT row_1 VARCHAR(9),
+                                      row_2 VARCHAR(9), row_3 VARCHAR(9))" 
+  end
 end
